@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+
+:root {
+  --primary: #B8860B;
+  --primary-light: rgba(184, 134, 11, 0.1);
+  --background: #f8f5f0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shine {
+  from {
+    background-position: 200% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(184, 134, 11, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
+}
+
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+.card-shadow {
+  box-shadow: 0 4px 20px rgba(184, 134, 11, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 134, 11, 0.8);
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--background) 0%,
+    #f0ebe4 50%,
+    var(--background) 100%
+  );
+  background-size: 200% 100%;
+  animation: shine 1.5s infinite;
+}
+
+/* Smooth transitions */
+.page-transition {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.page-transition-enter {
+  opacity: 0;
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+}
+
+/* Image hover effects */
+.image-zoom {
+  overflow: hidden;
+}
+
+.image-zoom img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-zoom:hover img {
+  transform: scale(1.1);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-[#B8860B] text-white px-6 py-3 rounded-md transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply bg-[#B8860B]/90 transform scale-105;
+}
+
+.btn-secondary {
+  @apply border-2 border-[#B8860B] text-[#B8860B] px-6 py-3 rounded-md transition-all duration-300;
+}
+
+.btn-secondary:hover {
+  @apply bg-[#B8860B] text-white transform scale-105;
+}
+
+/* Product card styles */
+.product-card {
+  @apply bg-white rounded-lg overflow-hidden transition-all duration-300;
+}
+
+.product-card:hover {
+  @apply shadow-xl transform -translate-y-2;
+}
+
+/* Form styles */
+.form-input {
+  @apply w-full px-4 py-2 border border-[#B8860B]/20 rounded-md focus:outline-none focus:ring-2 focus:ring-[#B8860B]/30 transition-all duration-300;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+/* Navigation styles */
+.nav-link {
+  @apply text-[#B8860B] hover:text-[#B8860B]/80 transition-colors duration-300 relative;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-[#B8860B] transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
